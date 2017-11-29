@@ -1,10 +1,11 @@
 package com.example.serdyuk.messenger;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class CreateMessageActivity extends AppCompatActivity {
+public class CreateMessageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +14,9 @@ public class CreateMessageActivity extends AppCompatActivity {
     }
 
     public void onSendMessage(View view) {
+        Intent intent = new Intent(this, ReceiveMessageActivity.class);
+        startActivity(intent);
+
+        System.out.println("Clicked!");
     }
 }
