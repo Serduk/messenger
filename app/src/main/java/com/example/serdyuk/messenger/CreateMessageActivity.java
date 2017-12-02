@@ -17,13 +17,15 @@ public class CreateMessageActivity extends Activity {
     }
 
     public void onSendMessage(View view) {
+        float random = new Random().nextFloat();
         System.out.println("Clicked!");
+        System.out.println("Random Float to transfer" + random);
         EditText textView = findViewById(R.id.message);
         String textInMessage = textView.getText().toString();
 
         Intent intent = new Intent(this, ReceivedMessage.class);
         intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
-        intent.putExtra("random", new Random().nextFloat());
+        intent.putExtra("random", random);
         startActivity(intent);
     }
 }
