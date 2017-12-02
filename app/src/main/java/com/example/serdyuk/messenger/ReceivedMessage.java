@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 public class ReceivedMessage extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "Empty Message";
+    private float random;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +17,12 @@ public class ReceivedMessage extends AppCompatActivity {
         Intent intent = getIntent();
 
         String intentMessage = intent.getStringExtra(EXTRA_MESSAGE);
+        random = intent.getFloatExtra("random", random);
         TextView textView = findViewById(R.id.receivedMessage);
         textView.setText(intentMessage);
+
+        System.out.println("Debug Log:");
+        System.out.println("Random Should be: " + random);
+        System.out.println("Text in Filed should be: " + intentMessage);
     }
 }

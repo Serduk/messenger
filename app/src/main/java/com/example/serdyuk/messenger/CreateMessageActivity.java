@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.Random;
+
 public class CreateMessageActivity extends Activity {
 
     @Override
@@ -21,6 +23,7 @@ public class CreateMessageActivity extends Activity {
 
         Intent intent = new Intent(this, ReceivedMessage.class);
         intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
+        intent.putExtra("random", new Random().nextFloat());
         startActivity(intent);
     }
 }
