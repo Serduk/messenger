@@ -23,9 +23,14 @@ public class CreateMessageActivity extends Activity {
         EditText textView = findViewById(R.id.message);
         String textInMessage = textView.getText().toString();
 
-        Intent intent = new Intent(this, ReceivedMessage.class);
-        intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
-        intent.putExtra("random", random);
+//        Intent intent = new Intent(this, ReceivedMessage.class);
+//        intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
+//        intent.putExtra("random", random);
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "This is Test Message");
+        intent.putExtra(Intent.EXTRA_TEXT, textInMessage);
         startActivity(intent);
     }
 }
