@@ -1,6 +1,7 @@
 package com.example.serdyuk.messenger;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,10 +28,29 @@ public class CreateMessageActivity extends Activity {
 //        intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
 //        intent.putExtra("random", random);
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "This is Test Message");
-        intent.putExtra(Intent.EXTRA_TEXT, textInMessage);
+//        Intent intent = new Intent(Intent.ACTION_SEND);
+//        intent.setType("text/plain");
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "This is Test Message");
+//        intent.putExtra(Intent.EXTRA_TEXT, textInMessage);
+
+        Intent intent;
+
+        try {
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "This is Test Message");
+            intent.putExtra(Intent.EXTRA_TEXT, textInMessage);
+
+//            If User should always choose in which app he should send message
+//            Intent intentChooser = Intent.createChooser(intent, textInMessage);
+//            startActivity(intentChooser);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            intent = new Intent(this, ReceivedMessage.class);
+            intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
+            intent.putExtra("random", random);
+        }
+
         startActivity(intent);
     }
 }

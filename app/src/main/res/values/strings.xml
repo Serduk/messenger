@@ -3,4 +3,5 @@
     <string name="send">Send Message</string>
     <string name="receiveMessageActivity">Received Message</string>
     <string name="receivedMessage">Received Message</string>
+    <string name="chooser">Send Message…</string>
 </resources>
