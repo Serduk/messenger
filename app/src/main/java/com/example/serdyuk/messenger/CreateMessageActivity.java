@@ -36,21 +36,22 @@ public class CreateMessageActivity extends Activity {
         Intent intent;
 
         try {
+            String chooserTitle = getString(R.string.chooser);
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             intent.putExtra(Intent.EXTRA_SUBJECT, "This is Test Message");
             intent.putExtra(Intent.EXTRA_TEXT, textInMessage);
 
 //            If User should always choose in which app he should send message
-//            Intent intentChooser = Intent.createChooser(intent, textInMessage);
-//            startActivity(intentChooser);
+            Intent intentChooser = Intent.createChooser(intent, chooserTitle);
+            startActivity(intentChooser);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
             intent = new Intent(this, ReceivedMessage.class);
             intent.putExtra(ReceivedMessage.EXTRA_MESSAGE, textInMessage);
             intent.putExtra("random", random);
+            startActivity(intent);
         }
 
-        startActivity(intent);
     }
 }
